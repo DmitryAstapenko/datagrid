@@ -6,7 +6,7 @@ import Grid from './containers/grid/Grid';
 import './App.css';
 
 const App = () => (
-  <Container>
+  <Container fluid>
     <Grid />
   </Container>
 );

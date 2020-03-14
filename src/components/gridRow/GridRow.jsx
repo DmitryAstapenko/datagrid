@@ -32,4 +32,17 @@ GridRow.propTypes = {
   cars: PropTypes.array,
 }
 
+GridRow.defaultProps = {
+  cars: [{
+      id: 0, 
+      make: "_", 
+      condition: false, 
+      vehicleType: "_", 
+      powerEngine: 0,
+      price: { currency: "_", amount: 0 }, 
+      dateManufacture: "_", 
+      location: "_" 
+  }]
+}
+
 export default GridRow;

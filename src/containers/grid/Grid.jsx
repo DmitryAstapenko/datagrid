@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+
+import { addCar } from '../../actions/actionCreator';
 
 import GridTitle from '../../components/gridTitle/GridTitle';
 import GridHeader from '../../components/gridHeader/GridHeader';
 import GridRow from '../../components/gridRow/GridRow';
 
-import data from '../../data.json'
 import './Grid.css';
 
 const COLUMNS = [
@@ -18,18 +20,21 @@ const COLUMNS = [
   { id: 8, name: "Location"},
 ];
 
-const CARS = data.cars;
-
 class Grid extends Component {
   render() {
+    const columns = COLUMNS;
+    const { cars } = this.props;
+
     return (
       <Fragment>
         <GridTitle title="Car list" />
-        <GridHeader columns={COLUMNS} />
-        <GridRow cars={CARS} />
+        <GridHeader columns={columns} />
+        <GridRow cars={cars}/>
       </Fragment>
     );
   } 
 } 
 
-export default Grid;
+export default connect(state => ({
+  cars: state.cars,
+}), { addCar })(Grid);
