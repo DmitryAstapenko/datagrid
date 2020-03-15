@@ -1,0 +1,11 @@
+.icon-sort-default {
+  color: #9ea5ab;  
+}
+
+.icon-sort-active {
+  color: #000;  
+}
+
+.icon-sort:hover {
+  color: #000;  
+}

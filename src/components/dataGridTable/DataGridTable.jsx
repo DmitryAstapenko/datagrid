@@ -1,6 +1,9 @@
 import React from 'react';
-import { Table, Form, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Icon } from '@iconify/react';
+import sortAmountDownAlt from '@iconify/icons-fa-solid/sort-amount-down-alt';
+import sortAmountDown from '@iconify/icons-fa-solid/sort-amount-down';
 
 import './DataGridTable.css';
 
@@ -8,21 +11,24 @@ function DataGridTable({ cars, columns, sortDecrease, sortIncrease }) {
   return (
     <Table responsive striped bordered hover size="sm">
       <thead>
-        <tr>{columns.map((column, index) =>(
-          <th key={index}>            
+        <tr>
+          <th className="text-center">#</th>
+          {columns.map(column => (
+            <th>                        
               {column.name}
-              <Button size="sm" onClick={() => sortDecrease(column.key)}>/\</Button>
-              <Button size="sm" onClick={() => sortIncrease(column.key)}>\/</Button>
-          </th>
-        ))}</tr>
+              <Icon className="icon-sort ml-2" onClick={() => sortIncrease(column.key)} icon={sortAmountDownAlt} />
+              <Icon className="icon-sort ml-1" onClick={() => sortDecrease(column.key)} icon={sortAmountDown} />
+            </th>
+          ))}
+        </tr>
       </thead>
       <tbody>
-        {cars.map(car => (
-          <tr key={car.id}>            
-            <td>{car.id}</td>
+        {cars.map((car, index) => (
+          <tr key={index}>
+            <td className="text-center">{index + 1}</td>            
             <td>{car.make}</td>
-            <td>
-              <Form.Check checked={car.condition} readOnly />
+            <td className="text-center">
+              {car.condition ? "new" : "with mileage"}
             </td>
             <td>{car.vehicleType}</td>
             <td>{car.powerEngine}</td>
