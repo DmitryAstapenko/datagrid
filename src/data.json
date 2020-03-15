@@ -1,4 +1,14 @@
 {
+  "columns": [
+    { "key": "id",  "name": "#"},
+    { "key": "make",  "name": "Make"},
+    { "key": "condition",  "name": "Condition"},
+    { "key": "vehicleType",  "name": "Vehicle Type"},
+    { "key": "powerEngine",  "name": "Power Engine"},
+    { "key": "price",  "name": "Price"},
+    { "key": "dateManufacture",  "name": "Date Manufacture"},
+    { "key": "location",  "name": "Location"}
+  ],
   "cars": [
     {
       "id": 1,

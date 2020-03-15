@@ -1,22 +1,9 @@
-import { ADD_CAR } from '../constants';
+import { SORT_DECREASE, SORT_INCREASE } from '../constants';
 
-export const addCar = (
-  id, 
-  make, 
-  condition, 
-  vehicleType, 
-  powerEngine,
-  price, 
-  dateManufacture, 
-  location 
-) => ({
-  type: ADD_CAR,
-  id, 
-  make, 
-  condition, 
-  vehicleType, 
-  powerEngine,
-  price, 
-  dateManufacture, 
-  location 
+export const sortDecrease = key => ({ 
+  type: SORT_DECREASE, key 
+});
+
+export const sortIncrease = key => ({ 
+  type: SORT_INCREASE, key 
 });

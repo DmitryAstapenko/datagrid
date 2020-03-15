@@ -1,1 +1,3 @@
-export const ADD_CAR = 'ADD_CAR';
+export const SORT_DECREASE = 'SORT_DECREASE';
+export const SORT_INCREASE = 'SORT_INCREASE';
+
