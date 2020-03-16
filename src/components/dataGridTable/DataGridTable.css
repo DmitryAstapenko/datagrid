@@ -1,11 +1,20 @@
-.icon-sort {
+.icon {
   color: #9ea5ab;  
+}
+
+.icon:hover {
+  color: #000;  
 }
 
 .icon-sort-active {
   color: #000;  
 }
 
-.icon-sort:hover {
-  color: #000;  
+.row-checked {
+  color: white !important;
+  background: #dc3545bf !important;    
+}
+
+.row-checked:hover {
+  background: #dc3545 !important;  
 }
