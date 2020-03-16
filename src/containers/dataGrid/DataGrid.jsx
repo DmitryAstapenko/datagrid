@@ -6,15 +6,10 @@ import { sortDecrease, sortIncrease } from '../../actions/actionCreator';
 import DataGridTitle from '../../components/dataGridTitle/DataGridTitle';
 import DataGridTable from '../../components/dataGridTable/DataGridTable';
 
-import data from '../../data.json'
-
 import './DataGrid.css';
-
-const COLUMNS = data.columns;
 
 class DataGrid extends Component {
   render() {
-    const columns = COLUMNS;
     const { cars, sortDecrease, sortIncrease } = this.props;
 
     return (
@@ -22,8 +17,7 @@ class DataGrid extends Component {
         <DataGridTitle title="Car list" />        
         <DataGridTable 
           sortDecrease={sortDecrease} 
-          sortIncrease={sortIncrease}
-          columns={columns} 
+          sortIncrease={sortIncrease}          
           cars={cars}
         />
       </Fragment>

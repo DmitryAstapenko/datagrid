@@ -6,15 +6,15 @@ import sortAmountDown from '@iconify/icons-fa-solid/sort-amount-down';
 
 import './IconSort.css';
 
-const IconSort = ({ key, sortDecrease, sortIncrease }) => (  
+const IconSort = ({ key, isDecrease, isIncrease, sortDecrease, sortIncrease }) => (  
   <Fragment>
     <Icon 
-      className="icon-sort ml-2" 
-      onClick={() => sortIncrease(column.key)} 
+      className={`icon-sort ml-2`} 
+      onClick={() => sortIncrease(key)} 
       icon={sortAmountDownAlt} />
     <Icon 
-      className="icon-sort ml-1" 
-      onClick={() => sortDecrease(column.key)} 
+      className={`icon-sort ml-1`} 
+      onClick={() => sortDecrease(key)} 
       icon={sortAmountDown} />
   </Fragment>  
 );
