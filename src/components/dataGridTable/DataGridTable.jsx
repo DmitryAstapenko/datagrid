@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Table, OverlayTrigger, Tooltip, Form, Row, Col, InputGroup, FormControl, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Table, OverlayTrigger, Tooltip, Form, Row, Col, InputGroup, FormControl, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import sortAmountDownAlt from '@iconify/icons-fa-solid/sort-amount-down-alt';
@@ -13,7 +13,7 @@ import './DataGridTable.css';
 function DataGridTable({ cars, sortDecrease, sortIncrease, deleteCars, checkCar, filterCars }) {       
   const iconDefault = 'icon';
   const iconActive = 'icon-sort-active';  
-
+  
   const [columns, setColumns] = useState(data.columns);
   const [sortedColumn, setSortedKey] = useState({
     columnKey: "",
@@ -46,11 +46,20 @@ function DataGridTable({ cars, sortDecrease, sortIncrease, deleteCars, checkCar,
     handleFilterCars(event.target.value);
   }
 
+  function handleClickColumnVisible(key) {
+    setColumns(columns.map(column => {
+      if (column.key === key) {
+        column.visible = !column.visible
+      }
+      return column;
+    }));
+  }
+
   return (
     <Fragment>      
-      <Row>
-        <Col xl={3} lg={3} md={6} sm={12} xs={12} >        
-          <InputGroup size="sm" className="mb-2 mt-2">
+      <Row className="mb-2 mt-2"> 
+        <Col xl={3} lg={3} md={6} sm={12} xs={12}>        
+          <InputGroup size="sm">
             <InputGroup.Prepend>
               <InputGroup.Text>Search</InputGroup.Text>
             </InputGroup.Prepend>
@@ -60,43 +69,57 @@ function DataGridTable({ cars, sortDecrease, sortIncrease, deleteCars, checkCar,
               onKeyDown={(event) => handleKeyDown(event)}
             />
           </InputGroup>
-        </Col>
-        <Col xl={3} lg={3} md={6} sm={12} xs={12}>          
-          <ToggleButtonGroup type="checkbox" size="sm" className="mb-2 mt-2">
-            {columns.map(column => (
-              <ToggleButton>{column.name}</ToggleButton>
-            ))}
-          </ToggleButtonGroup>
-        </Col>
-      </Row>
+        </Col> 
+        <Col xl={3} lg={3} md={6} sm={12} xs={12}></Col>       
+      </Row>      
       <Table responsive striped bordered hover size="sm">
         <thead>
           <tr>
-            <th className="text-center">#</th>
+            <th className="text-center" width="10">
+              <Dropdown>
+                <Dropdown.Toggle size="sm" variant="dark">Column</Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <ButtonGroup vertical>
+                    {columns.map((column, index) => (            
+                      <Button 
+                        key={index}
+                        size="sm" 
+                        variant={column.visible ? "dark" : "outline-dark"}
+                        onClick={() => handleClickColumnVisible(column.key)}
+                      >
+                        {column.name}
+                      </Button>
+                    ))}
+                  </ButtonGroup>
+                </Dropdown.Menu>            
+              </Dropdown>          
+            </th>
             {columns.map((column, index) => {              
               const iconIncsCN = sortedColumn.columnKey === column.key ? sortedColumn.increaseCN : iconDefault;
               const iconDecsCN = sortedColumn.columnKey === column.key ? sortedColumn.decreaseCN : iconDefault;
               return (
                 column.visible ? 
-                <th key={index}>                        
-                  {column.name}
-                  <Icon 
-                    className={`${iconIncsCN} ml-2`} 
-                    onClick={() => handleClickSortIncs(column.key)} 
-                    icon={sortAmountDownAlt} 
-                  />
-                  <Icon 
-                    className={`${iconDecsCN} ml-1`} 
-                    onClick={() => handleClickSortDecs(column.key)} 
-                    icon={sortAmountDown} 
-                  />
+                <th key={index}>
+                  <Row className="mb-1"><Col>
+                    {column.name}
+                    <Icon 
+                      className={`${iconIncsCN} ml-2`} 
+                      onClick={() => handleClickSortIncs(column.key)} 
+                      icon={sortAmountDownAlt} 
+                    />
+                    <Icon 
+                      className={`${iconDecsCN} ml-1`} 
+                      onClick={() => handleClickSortDecs(column.key)} 
+                      icon={sortAmountDown} 
+                    />
+                  </Col></Row>                                                                          
                 </th> : null              
               );
             })}          
-            <th className="text-center">
+            <th className="text-center" width="10">
               <OverlayTrigger placement="left" overlay={<Tooltip>Delete selected cars</Tooltip>}>
                 <Icon 
-                  className="icon" 
+                  className="icon mb-1" 
                   width="24" 
                   height="24" 
                   icon={deleteForeverOutline}

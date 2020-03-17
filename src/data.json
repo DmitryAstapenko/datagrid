@@ -1,7 +1,7 @@
 {
   "columns": [    
     { 
-      "visible": false,
+      "visible": true,
       "key": "make",
       "name": "Make"
     },
