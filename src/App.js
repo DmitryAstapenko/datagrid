@@ -1,11 +1,14 @@
 import React from 'react';
-import './App.css';
 import { Container } from 'react-bootstrap';
 
-function App() {
-  return (
-    <Container></Container>
-  );
-}
+import DataGrid from './containers/dataGrid/DataGrid';
+
+import './App.css';
+
+const App = () => (
+  <Container fluid>
+    <DataGrid />
+  </Container>
+);
 
 export default App;
