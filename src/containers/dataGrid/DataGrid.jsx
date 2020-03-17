@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import { sortDecrease, sortIncrease, deleteCars, checkCar } from '../../actions/actionCreator';
+import { sortDecrease, sortIncrease, deleteCars, checkCar, filterCars } from '../../actions/actionCreator';
 
 import DataGridTitle from '../../components/dataGridTitle/DataGridTitle';
 import DataGridTable from '../../components/dataGridTable/DataGridTable';
 
 import './DataGrid.css';
 
-const DataGrid = ({ cars, sortDecrease, sortIncrease, deleteCars, checkCar }) => {
+const DataGrid = ({ cars, sortDecrease, sortIncrease, deleteCars, checkCar, filterCars }) => {
   return (
     <Fragment>
       <DataGridTitle title="Car list" />        
@@ -18,6 +18,7 @@ const DataGrid = ({ cars, sortDecrease, sortIncrease, deleteCars, checkCar }) =>
         sortIncrease={sortIncrease}          
         deleteCars={deleteCars}          
         checkCar={checkCar}
+        filterCars={filterCars}
       />
     </Fragment>
   );
@@ -25,4 +26,4 @@ const DataGrid = ({ cars, sortDecrease, sortIncrease, deleteCars, checkCar }) =>
 
 export default connect(state => ({
   cars: state.cars,
-}), { sortDecrease, sortIncrease, deleteCars, checkCar })(DataGrid);
+}), { sortDecrease, sortIncrease, deleteCars, checkCar, filterCars })(DataGrid);

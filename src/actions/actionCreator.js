@@ -1,4 +1,4 @@
-import { SORT_DECREASE, SORT_INCREASE, DELETE_CARS, CHECK_CAR } from '../constants';
+import { SORT_DECREASE, SORT_INCREASE, DELETE_CARS, CHECK_CAR, FILTER_CARS } from '../constants';
 
 export const sortDecrease = key => ({ 
   type: SORT_DECREASE, key 
@@ -14,4 +14,8 @@ export const deleteCars = () => ({
 
 export const checkCar = id => ({ 
   type: CHECK_CAR, id 
+});
+
+export const filterCars = valueFilter => ({ 
+  type: FILTER_CARS , valueFilter
 });

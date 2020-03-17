@@ -18,3 +18,7 @@
 .row-checked:hover {
   background: #dc3545 !important;  
 }
+
+.dissplay-none {
+  display: none;
+}

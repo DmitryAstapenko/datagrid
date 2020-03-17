@@ -1,37 +1,37 @@
 {
   "columns": [    
     { 
-      "isChecked": true,
+      "visible": false,
       "key": "make",
       "name": "Make"
     },
     { 
-      "isChecked": true,
+      "visible": true,
       "key": "condition",
       "name": "Condition"
     },
     { 
-      "isChecked": true,
+      "visible": true,
       "key": "vehicleType",
       "name": "Vehicle Type"
     },
     { 
-      "isChecked": true,
+      "visible": true,
       "key": "powerEngine",
       "name": "Power Engine"
     },
     { 
-      "isChecked": true,
+      "visible": true,
       "key": "price",
       "name": "Price"
     },
     { 
-      "isChecked": true,
+      "visible": true,
       "key": "dateManufacture",
       "name": "Date Manufacture"
     },
     { 
-      "isChecked": true,
+      "visible": true,
       "key": "location",
       "name": "Location"
     }
